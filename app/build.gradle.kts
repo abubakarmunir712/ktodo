@@ -13,6 +13,8 @@ plugins {
     application
     
     id("org.beryx.jlink") version "4.0.1"
+    kotlin("plugin.serialization") version "2.3.20"
+
 
 }
 
@@ -29,6 +31,7 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
