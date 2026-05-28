@@ -11,6 +11,9 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    
+    id("org.beryx.jlink") version "4.0.1"
+
 }
 
 repositories {
@@ -43,4 +46,20 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+jlink {
+    imageZip.set(project.file("${layout.buildDirectory.get()}/distributions/ktodo.zip"))
+
+    options.set(listOf(
+        "--strip-debug",
+        "--compress", "2",
+        "--no-header-files",
+        "--no-man-pages"
+    ))
+
+    launcher {
+        name = "ktodo"
+    }
+
 }
